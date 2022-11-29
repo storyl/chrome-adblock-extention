@@ -1,5 +1,12 @@
 chrome.webRequest.onBeforeRequest.addListener((details) => {
   console.log(details)
-}, {
-  urls: ['<all_urls>']
-}, ['blocking'])
+  return {
+    cancel: true,
+  }
+}, 
+{
+  urls: ['*://*.googleadservices.com/*', '*://*adclick.g.doubleclick.net*',
+'*://*.tpc.googlesyndication.com/*']
+},
+ ['blocking']
+)
